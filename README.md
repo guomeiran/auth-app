@@ -1,8 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js + Supabase 用户登录项目
 
-## Getting Started
+这是一个使用 Next.js 和 Supabase 实现的用户登录功能示例项目。
 
-First, run the development server:
+## 功能特性
+
+- 用户邮箱密码登录
+- 用户注册功能
+- 自动跳转到登录页（未登录时）
+- 显示用户信息
+- 登出功能
+
+## 环境配置
+
+1. 复制 `.env.local.example` 为 `.env.local`
+2. 在 `.env.local` 中填入你的 Supabase 项目信息：
+   - `NEXT_PUBLIC_SUPABASE_URL`: 你的 Supabase 项目 URL
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: 你的 Supabase 匿名密钥
+
+## 安装依赖
+
+```bash
+npm install
+```
+
+## 启动开发服务器
 
 ```bash
 npm run dev
@@ -14,23 +35,22 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 配置 Supabase
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. 在 Supabase 控制台中启用 Email/Password 认证
+2. 确保数据库中创建了 `students_score` 表（可选，用于演示）
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 项目结构
 
-## Learn More
+- `/app/page.tsx` - 主页，显示用户信息和登出按钮
+- `/app/login/page.tsx` - 登录页面
+- `/app/auth/logout/route.ts` - 登出 API 路由
+- `/lib/supabaseClient.ts` - Supabase 客户端配置
+- `/types/supabase.ts` - TypeScript 类型定义
 
-To learn more about Next.js, take a look at the following resources:
+## 使用说明
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. 访问 `/login` 页面进行登录或注册
+2. 登录成功后自动跳转到主页
+3. 在主页可以查看用户信息和登出
+4. 登出后会自动跳转到登录页
