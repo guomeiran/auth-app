@@ -28,7 +28,7 @@ export default function LoginPage() {
       router.push('/dashboard')
       router.refresh()
     } catch (error: any) {
-      setError(error.message || '登录失败')
+      setError('登录失败，请检查您的邮箱和密码')
     } finally {
       setLoading(false)
     }
@@ -48,7 +48,7 @@ export default function LoginPage() {
 
       alert('注册成功！请检查邮箱确认注册。')
     } catch (error: any) {
-      setError(error.message || '注册失败')
+      setError('注册失败，请稍后重试')
     } finally {
       setLoading(false)
     }
