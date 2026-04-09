@@ -12,13 +12,9 @@ export default function DashboardPage() {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const { data: { user } } = await supabase.auth.getUser()
-        if (user) {
-          setUser(user)
-        } else {
-          // 如果用户未登录，重定向到登录页面
-          router.push('/login')
-        }
+        const { data: { user }, error } = await supabase.auth.getUser()
+        if (error) throw error
+        setUser(user)
       } catch (error) {
         console.error('获取用户信息失败:', error)
         router.push('/login')
