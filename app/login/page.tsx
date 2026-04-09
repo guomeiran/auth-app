@@ -24,8 +24,8 @@ export default function LoginPage() {
 
       if (error) throw error
 
-      // Redirect to home page after successful login
-      router.push('/')
+      // Redirect to dashboard page after successful login
+      router.push('/dashboard')
       router.refresh()
     } catch (error: any) {
       setError(error.message || '登录失败')
